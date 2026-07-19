@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Noolite NooHub",
+        "data": {
+          "host": "Адрес контроллера",
+          "login": "Логин",
+          "password": "Пароль",
+          "protocol": "Протокол",
+          "api_base_path": "Базовый путь API"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Не удалось подключиться к контроллеру NooHub",
+      "unknown": "Неожиданная ошибка"
+    },
+    "abort": {
+      "already_configured": "Контроллер уже настроен"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Noolite NooHub",
+        "data": {
+          "host": "Host",
+          "login": "Login",
+          "password": "Password",
+          "protocol": "Protocol",
+          "api_base_path": "API base path"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to NooHub controller",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "Controller is already configured"
+    }
+  }
+}
