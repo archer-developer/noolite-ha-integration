@@ -5,7 +5,9 @@ from requests.auth import HTTPDigestAuth
 
 
 class NooHubApiError(Exception):
-    pass
+    def __init__(self, message: str, api_message: str | None = None) -> None:
+        super().__init__(message)
+        self.api_message = api_message
 
 
 class NooHubApi:
@@ -35,7 +37,8 @@ class NooHubApi:
 
         data: dict = resp.json()
         if not data.get("success"):
-            raise NooHubApiError(f"NooHub error: {data.get('message', 'unknown')}")
+            msg = data.get("message", "unknown")
+            raise NooHubApiError(f"NooHub error: {msg}", api_message=msg)
         return data
 
     def get_devices(self) -> list[dict]:
