@@ -40,7 +40,7 @@ NooHub devices relevant to this integration:
   "id": "device-uuid",
   "name": "Bedroom Light",
   "type": "block",
-  "subtype": "light",          // or "switch"
+  "subtype": "light",          // light | socket | switch | thermostat | curtain | sensor
   "skills": ["brightness", "color"],
   "retrievable": true,         // false = TX-only, no feedback
   "room": "Bedroom",

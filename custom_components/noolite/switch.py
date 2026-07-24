@@ -26,7 +26,7 @@ async def async_setup_entry(
     entities = [
         NooliteSwitchEntity(coordinator, device_id)
         for device_id, device in coordinator.data["devices"].items()
-        if device["type"] == "block" and device["subtype"] == "switch"
+        if device["type"] == "block" and device["subtype"] in ("switch", "socket")
     ]
     async_add_entities(entities)
 
