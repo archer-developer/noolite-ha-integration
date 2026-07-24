@@ -46,13 +46,21 @@ class NooHubApi:
         return data.get("devices", [])
 
     def get_state(self, device_ids: list[str]) -> dict[str, dict]:
-        """Return {device_id: state_dict} for retrievable devices."""
+        """Return {device_id: payload} for retrievable devices.
+
+        Payload is a state dict (on/brightness/color, ...) for block devices,
+        or an events dict (remote/cmd/last_update) for remote devices.
+        """
         data = self.request({"action": "get_state", "devices": device_ids})
         result: dict[str, dict] = {}
         for device in data.get("devices", []):
             state = device.get("state")
             if state and state is not False:
                 result[device["id"]] = state
+                continue
+            events = device.get("events")
+            if events:
+                result[device["id"]] = {**events, "last_update": device.get("last_update")}
         return result
 
     def set_state(self, device_id: str, state: dict) -> bool:

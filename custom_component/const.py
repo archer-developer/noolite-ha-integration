@@ -12,4 +12,4 @@ DEFAULT_PROTOCOL = "http"
 DEFAULT_API_BASE_PATH = "/api"
 DEFAULT_SCAN_INTERVAL = 30
 
-PLATFORMS = ["light", "switch"]
+PLATFORMS = ["light", "switch", "event"]
