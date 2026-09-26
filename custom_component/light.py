@@ -125,9 +125,16 @@ class NooliteLightEntity(CoordinatorEntity[NooHubCoordinator], LightEntity):
 
     async def _send(self, state: dict) -> None:
         try:
-            await self.coordinator.async_set_state(self._device_id, state)
+            result = await self.coordinator.async_set_state(self._device_id, state)
         except NooHubApiError as err:
             _LOGGER.error("Failed to control %s: %s", self._device_id, err)
+            return
+
+        if not result:
+            _LOGGER.warning(
+                "NooHub reported failure setting %s, leaving reported state unchanged",
+                self._device_id,
+            )
             return
 
         if not self._retrievable:
